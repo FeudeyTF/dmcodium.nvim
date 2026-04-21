@@ -22,20 +22,19 @@ function M.setup(opts)
 		callback = function() vim.treesitter.start() end,
 	})
 
-	require('nvim-treesitter.parsers').dm = {
-		install_info = config.get_tree_sitter_info(),
-	}
+	vim.api.nvim_create_autocmd('User', {
+		pattern = 'TSUpdate',
+		callback = function()
+			require('nvim-treesitter.parsers').dm = {
+				install_info = config.get_tree_sitter_info(),
+			}
+		end
+	})
 
-	require('nvim-treesitter.install').install({ "dm" }, { summary = true })
+	require('nvim-treesitter.install').install({ 'dm' }, true)
 
 	-- LSP config for DreamMaker language server
-	vim.lsp.config['dm'] = {
-		-- Command, that will start language server
-		cmd = { 'dm-langserver' },
-		filetypes = { 'dm' },
-		root_markers = { 'SpacemanDMM.toml', '.git' },
-		settings = {},
-	}
+	vim.lsp.config['dm'] = config.get_language_server_info()
 
 	vim.lsp.enable("dm")
 end
@@ -45,3 +44,4 @@ function M.update()
 end
 
 return M
+
