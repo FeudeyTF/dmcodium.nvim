@@ -10,11 +10,10 @@ local config = {
 		queries = 'queries/neovim',
 	},
 	language_server_dm_info = {
-		cmd = vim.fs.joinpath(vim.fn.stdpath('data'), 'site', 'dm-langserver'),
+		cmd = 'dm-langserver',
 		filetypes = { 'dm' },
 		root_markers = { 'SpacemanDMM.toml', '.git' },
 		settings = {},
-		url = { 'https://github.com/SpaceManiac/SpacemanDMM/releases/download/suite-1.11/dm-langserver' }
 	}
 }
 
