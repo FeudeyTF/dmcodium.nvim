@@ -1,4 +1,4 @@
-vim.api.nvim_create_user_command('dmupdate', function(args)
+vim.api.nvim_create_user_command('DMUpdate', function(args)
 	require('dmcodium.nvim').update()
 end, {
 	nargs = '*',
