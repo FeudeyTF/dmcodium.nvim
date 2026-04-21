@@ -32,7 +32,7 @@ function M.get_tree_sitter_info()
 end
 
 function M.get_language_server_info()
-	return { path = config.language_server_dm_path }
+	return config.language_server_dm_info
 end
 
 return M
