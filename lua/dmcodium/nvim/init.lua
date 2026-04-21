@@ -33,8 +33,14 @@ function M.setup(opts)
 
 	require('nvim-treesitter.install').install({ 'dm' }, true)
 
+	local lsp_info = config.get_language_server_info()
+
+	vim.fn.jobstart({ 'curl', '-o', lsp_info.cmd, lsp_info.url }, {
+		on_exit = function() print("Downloaded LSP server for DreamMaker") end
+	})
+
 	-- LSP config for DreamMaker language server
-	vim.lsp.config['dm'] = config.get_language_server_info()
+	vim.lsp.config['dm'] = lsp_info
 
 	vim.lsp.enable("dm")
 end
@@ -44,4 +50,3 @@ function M.update()
 end
 
 return M
-
