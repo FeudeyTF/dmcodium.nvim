@@ -2,7 +2,7 @@ local M = {}
 
 function M.setup(opts)
 	local config = require('dmcodium.nvim.config')
-	conig.setup(opts)
+	config.setup(opts)
 
 	-- Adding .dm, .dme and .dmm as DM language files
 	vim.filetype.add({
